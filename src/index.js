@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import "./index.css";
 // import MyWebsite from './App';
@@ -137,18 +137,123 @@ import "./index.css";
 //     <li> {key} {values}</li>
 //   )
 // }
-function ListKeyExample(props) {
-  const sampleArray = props.myArray
-  const sampleArrayMap = sampleArray.map((value,ind)=>{
-    // return <MyList value={value} index={ind}/>
-    return <li>{ind} {value}</li> 
-  })
-  return(
-    <ul>{sampleArrayMap}</ul>
-    )  
-  }
-  const sampleArray = [1,2,3,4,5,6]
-ReactDOM.render(<ListKeyExample myArray={sampleArray}/>, document.getElementById("root"))
+
+// function ListKeyExample(props) {
+//   const sampleArray = props.myArray
+//   const sampleArrayMap = sampleArray.map((value,ind)=>{
+//     // return <MyList value={value} index={ind}/>
+//     return <li>{ind} {value}</li> 
+//   })
+//   return(
+//     <ul>{sampleArrayMap}</ul>
+//     )  
+//   }
+//   const sampleArray = [1,2,3,4,5,6]
+// ReactDOM.render(<ListKeyExample myArray={sampleArray}/>, document.getElementById("root"))
+
+// class LifeCycle extends React.Component{
+//   constructor() {
+//     super();
+//     this.state = {value:"Welcome",people:"Friends"}
+//   }
+//   changeValue = () => {
+//     this.setState({value:"Learn",people:"ReactJS"})
+//   }
+//   removeValue = () => {
+//     this.setState({value:false,people:false})
+//     document.getElementById("remove").innerHTML = "Element is removed succesfully"
+//   }
+//   componentWillMount() {
+//     alert("Do you want to open ?")
+//   }
+//   render() {
+//     return(
+//       <div>
+//         <h1>{this.state.value} {this.state.people}</h1>
+//         <button type="button" onClick={this.changeValue}>Change Value</button>
+//         <button type="button" onClick={this.removeValue}>Remove Header</button>
+//         <p id="myChange"></p>
+//         <p id="remove"></p>
+//       </div>
+//     )
+//   }
+//   componentDidMount() {
+//     document.getElementById("myChange").innerHTML = "Component is rendered succesfully"
+//   }
+//   componentWillUpdate() {
+//     alert("Do you want to Update ?")
+//   }
+//   componentDidUpdate() {
+//     document.getElementById("myChange").innerHTML = "Component is re-rendered succesfully"
+//   }
+//   shouldComponentUpdate() {
+//     return true
+//   }
+//   componentWillUnmount() {
+//     document.getElementById("myChange").innerHTML = "Component is removed succesfully"
+//   }
+// }
+
+// ReactDOM.render(<LifeCycle/>,document.getElementById("root"));
+
+// class Reactforms extends React.Component {
+//   constructor() {
+//     super();
+//     this.state = {username:" "}
+//     this.state = {age:null}
+//     this.state = {nationality:" "}
+//     this.state = {errmsg: " "}
+//   }
+//   handleChange = (event) => {
+//     let n = event.target.name;
+//     let v = event.target.value;
+//     this.setState({[n]:v})
+//     let err = ""
+//     if (n==="age"){
+//       if (v !== "" && !Number(v)){
+//         err = <p>Enter the correct age, Do not leave the input empty</p>
+//       }
+//     }
+//     this.setState({errmsg:err})
+//   }
+//   handleSubmit = (event) => {
+//     event.preventDefault();
+//     alert(`Your name is ${this.state.username},age ${this.state.age},${this.state.nationality}`)
+//   }
+//   render() {
+//     return (
+//       <div>
+//         <h1>Welcome {this.state.username}</h1>
+//         <form onSubmit={this.handleSubmit}>
+//           Enter your name : <input type="text" name="username" onChange={this.handleChange}></input>
+//           Enter your age : <input type="text" name="age" onChange={this.handleChange} ></input>{this.state.errmsg}
+//           Nationality : <input type="text" name="nationality" onChange={this.handleChange} />
+//           <input type="submit"/>
+//         </form>
+//       </div>
+//     )
+//   }
+// }
+
+// ReactDOM.render(<Reactforms />, document.getElementById("root"))
+
+function ReactHooks() {
+  const [count,setCount] = useState(0);
+  useEffect(()=> {
+    alert("Namasthe ReactJS Learners")
+  },[]);
+  // const handleClick = (value) => {
+  //   setCount(value)
+  // }
+  return (
+    <div>
+      <h1>You clicked {count} times.</h1>
+      <button onClick={()=> setCount(count + 1)}>Click Me</button>
+    </div>
+  )
+}
+
+ReactDOM.render(<ReactHooks />,document.getElementById("root"))
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
