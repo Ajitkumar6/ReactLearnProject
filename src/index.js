@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import "./index.css";
+import { BrowserRouter as Router, Route, Link, NavLink, Switch } from 'react-router-dom';
+import AboutUs from './about';
+import Home from './home';
+
 // import MyWebsite from './App';
 // import ReactDOM from 'react-dom/client';
 // import './index.css';
@@ -237,23 +241,35 @@ import "./index.css";
 
 // ReactDOM.render(<Reactforms />, document.getElementById("root"))
 
-function ReactHooks() {
-  const [count,setCount] = useState(0);
-  useEffect(()=> {
-    alert("Namasthe ReactJS Learners")
-  },[]);
-  // const handleClick = (value) => {
-  //   setCount(value)
-  // }
-  return (
-    <div>
-      <h1>You clicked {count} times.</h1>
-      <button onClick={()=> setCount(count + 1)}>Click Me</button>
-    </div>
-  )
-}
+// function ReactHooks() {
+//   const [count,setCount] = useState(0);
+//   useEffect(()=> {
+//     alert("Namasthe ReactJS Learners")
+//   },[]);
+//   // const handleClick = (value) => {
+//   //   setCount(value)
+//   // }
+//   return (
+//     <div>
+//       <h1>You clicked {count} times.</h1>
+//       <button onClick={()=> setCount(count + 1)}>Click Me</button>
+//     </div>
+//   )
+// }
 
-ReactDOM.render(<ReactHooks />,document.getElementById("root"))
+// ReactDOM.render(<ReactHooks />,document.getElementById("root"))
+
+const routing = (
+    <Router>
+        <div>
+            <h1>React Router Learning</h1>
+            <Route exact path="/" component={Home} />
+            <Route path="/a" component={AboutUs} />
+        </div>
+    </Router>
+)
+
+ReactDOM.render(routing,document.getElementById("root"));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
